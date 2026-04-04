@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Menu */
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vh 2vw;
+    background: rgba(0,0,0,0.3);
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.logo {
+    height: clamp(40px, 8vh, 70px);
+    width: auto;
+}
+
+.menu-links {
+    display: flex;
+    gap: 3vw;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: clamp(14px, 1.5vw, 18px);
+    padding: 0.5em 1em;
+    white-space: nowrap;
+}
+
+.menu a:hover {
+    color: black;
+    background: white;
+    border-radius: 4px;
+}
+
+@media screen and (max-device-width: 768px) {
+    .menu {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu img.logo {
+        margin-bottom: 2vh; 
+    }
+
+    .menu-links {
+        flex-direction: column;
+        gap: 2vh;
+        margin-top: 0; 
+        width: 100%;   
+    }
+
+    .menu a {
+        font-size: 3vw;
+        padding: 0.5em 1em;
+        display: block; 
+    }
+}
+
+
+/* Background */
+.background {
+    background-image: url("https://i.pinimg.com/1200x/4a/7f/d5/4a7fd560f429b02aa1a85688a0e4cd49.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.background h1 {
+    font-size: 4vw;
+}
+
+.background .btn {
+    background: darkolivegreen;
+    color: white;
+    padding: 3vh 6.5vw;
+    text-decoration: none;
+    border-radius: 0;
+    font-weight: bold;
+    font-size: 1.5vw;
+}
+
+.background .btn:hover {
+    background: darkseagreen;
+}
+
+@media screen and (max-device-width: 768px) {
+    .background h1 {
+        font-size: 8vw; 
+    }
+    .background .btn {
+        font-size: 4vw; 
+        margin-bottom: 6vh; 
+    }
+}
+
+/* Thực trạng */
+.current_situation {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 5vh 5vw;
+    background: darkslategray;
+    text-align: left;
+    flex-wrap: nowrap;
+}
+
+.current_situation img {
+    width: 50%;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+    order: 2;
+}
+
+.current_situation .content {
+    width: 50%;
+    padding-right: 3vw;
+    order: 1;
+}
+
+.current_situation h2 {
+    font-size: 3vw;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1.5vh;
+    line-height: 1.3;
+}
+
+.current_situation p {
+    font-size: 1.8vw;
+    color: white;
+    text-indent: 2vw;
+    line-height: 1.6;
+}
+
+.current_situation .btn {
+    background: darkolivegreen;
+    color: white;
+    padding: 3vh 6.5vw;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5vw;
+}
+
+.current_situation .btn:hover {
+    background: darkseagreen;
+}
+
+@media screen and (max-device-width: 768px) {
+    .current_situation {
+        flex-direction: column;
+        text-align: center;
+    }
+    .current_situation .content,
+    .current_situation img {
+        width: 100%;
+        padding-right: 0;
+    }
+    .current_situation img {
+        margin-top: 6vh;
+    }
+    .current_situation h2 {
+        font-size: 6vw;
+    }
+    .current_situation p {
+        text-align: left;
+        font-size: 4vw;
+    }
+    .current_situation .btn {
+        font-size: 4vw;
+        margin-bottom: 6vh; 
+    }
+}
+
+/* Nguyên nhân */
+.reason {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 5vh 5vw;
+    background: rgb(56, 99, 95);
+    text-align: left;
+    flex-wrap: nowrap;
+}
+
+.reason img {
+    width: 50%;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+    order: 1;
+}
+
+.reason .content {
+    width: 50%;
+    padding-left: 3vw;
+    order: 2;
+}
+
+.reason h2 {
+    font-size: 3vw;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1.5vh;
+    line-height: 1.3;
+}
+
+.reason p {
+    font-size: 1.8vw;
+    color: white;
+    text-indent: 2vw;
+    line-height: 1.6;
+}
+
+.reason .btn {
+    background: darkolivegreen;
+    color: white;
+    padding: 3vh 6.5vw;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5vw;
+}
+
+.reason .btn:hover {
+    background: darkseagreen;
+}
+
+@media screen and (max-device-width: 768px) {
+    .reason {
+        flex-direction: column;
+        text-align: center;
+    }
+    .reason .content,
+    .reason img {
+        margin-top: 6vh;
+        width: 100%;
+        padding-left: 0;
+    }
+    .reason img {
+        margin-bottom: 2vh;
+    }
+    .reason h2 {
+        font-size: 6vw;
+    }
+    .reason p {
+        text-align: left;
+        font-size: 4vw;
+    }
+    .reason .btn {
+        font-size: 4vw;
+    }
+}
+
+/* Hậu quả */
+.result {
+    background-color: rgb(72, 128, 122);
+    padding: 6vh 2vw;
+    text-align: center;
+    color: white;
+}
+
+.result h2 {
+    font-size: 3vw;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1.5vh;
+    line-height: 1.3;
+}
+
+.result p {
+    text-align: left;
+    font-size: 1.8vw;
+    color: white;
+    text-indent: 2vw;
+    line-height: 1.6;
+}
+
+.result .btn {
+    background: darkolivegreen;
+    color: white;
+    padding: 3vh 6.5vw;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5vw;
+}
+
+.result .btn:hover {
+    background: darkseagreen;
+}
+
+.result img {
+    margin-top: 6vh;
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+@media screen and (max-device-width: 768px) {
+    .result h2 {
+        font-size: 6vw; 
+    }
+    .result p {
+        text-align: left;
+        font-size: 4vw; 
+    }
+    .result .btn {
+        font-size: 4vw; 
+        margin-bottom: 6vh; 
+    }
+}
+
+/* Biện pháp khắc phục */
+.solution {
+    background-image: url("https://i.pinimg.com/736x/3e/1f/91/3e1f91ac0ae19a003c66f010943f67b0.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 6vh 2vw;
+}
+
+.solution h2 {
+    font-size: 3vw;
+    font-weight: bold;
+    margin-bottom: 2vh;
+}
+
+.solution p {
+    text-indent: 2vw;
+    text-align: left;
+    font-size: 1.5vw;
+    line-height: 1.6;
+    margin-bottom: 3vh;
+}
+
+.solution .btn {
+    background: darkolivegreen;
+    color: white;
+    padding: 3vh 6.5vw;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5vw;
+    margin-bottom: 4vh;
+}
+
+.solution .btn:hover {
+    background: darkseagreen;
+}
+
+@media screen and (max-device-width: 768px) {
+    .solution h2 {
+        font-size: 6vw; 
+    }
+    .solution p {
+        text-align: left;
+        font-size: 4vw; 
+    }
+    .solution .btn {
+        font-size: 4vw; 
+        margin-bottom: 6vh; 
+    }
+}
+/* Ending */
+.ending {
+    background-color: #222;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    padding: 4vh 2vw;
+}
+
+.ending-right {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4vw;
+}
+
+.ending-box {
+    width: 25vw;
+    min-width: 200px;
+}
+
+.ending-box a {
+    color: white;
+}
+
+.ending-box a:hover {
+    color: yellow;
+}
+
+.ending-box h3 {
+    margin-bottom: 1vh;
+    font-size: 2vw;
+    border-bottom: 2px solid white;
+    padding-bottom: 0.5vh;
+}
+
+.ending-box p {
+    margin: 0.5vh 0;
+    font-size: 1vw;
+}
+
+.ending-box p:hover {
+    color: lightgray;
+}
+
+@media screen and (max-device-width: 768px) {
+    .ending-box h3 {
+        font-size: 4vw; 
+    }
+    .ending-box p {
+        font-size: 2vw; 
+    }
+    .ending-box {
+        width: 50vw;
+    }
+}
+</style>
+</head>
+<body>
+<div class="menu">
+    <div>
+        <img src="https://png.pngtree.com/png-clipart/20211226/original/pngtree-earth-illustration-logo-and-its-elements-png-image_6978158.png" class="logo">
+    </div>
+    <div class="menu-links">
+        <a href="#">HOME</a>
+        <a href="#">BLOG</a>
+        <a href="#">PORTFOLIO</a>
+        <a href="#">ABOUT</a>
+    </div>
+</div>
+
+
+<div class="background">
+    <h1>VẤN ĐỀ Ô NHIỄM MÔI TRƯỜNG Ở HÀ NỘI</h1>
+    <div>
+        <a href="#" class="btn">BẮT ĐẦU</a>
+    </div>
+
+</div>
+
+<div class="current_situation">
+    <img src="https://i.pinimg.com/1200x/f6/ec/92/f6ec920d1e5e0bb9cd828a075c35bb50.jpg" alt="Thực trạng ô nhiễm môi trường ở Hà Nội">
+    <div class="content">
+        <h2>THỰC TRẠNG Ô NHIỄM MÔI TRƯỜNG Ở HÀ NỘI</h2>
+        <p>Ô nhiễm môi trường ở Hà Nội đang trở thành một thách thức nghiêm trọng, khi không khí, nguồn nước và đất đai đều bị ảnh hưởng nặng nề bởi rác thải và khí thải từ hoạt động của con người. Tình trạng này không chỉ làm suy giảm chất lượng cuộc sống mà còn gây ra nhiều hệ lụy cho sức khỏe cộng đồng và hệ sinh thái. Nếu không có biện pháp khắc phục kịp thời, hậu quả sẽ tiếp tục kéo dài và ảnh hưởng đến các thế hệ tương lai.</p>
+        <br>
+        <a href="thuc_trang.html" target="_blank" class="btn">XEM CHI TIẾT</a>
+
+    </div>
+</div>
+
+<div class="reason">
+    <div class="content">
+        <h2>NGUYÊN NHÂN Ô NHIỄM MÔI TRƯỜNG Ở HÀ NỘI</h2>
+        <p>Nguyên nhân ô nhiễm môi trường ở Hà Nội chủ yếu bắt nguồn từ mật độ giao thông quá cao, với lượng lớn phương tiện thải khí độc hại mỗi ngày. Ngoài ra, hoạt động công nghiệp, xây dựng và việc xử lý rác thải chưa hiệu quả cũng góp phần làm tình trạng ô nhiễm ngày càng trầm trọng. Bên cạnh đó, ý thức bảo vệ môi trường của một bộ phận người dân còn hạn chế, khiến vấn đề này trở nên khó kiểm soát hơn.</p>
+        <br>
+        <a href="#" class="btn">XEM CHI TIẾT</a>
+    </div>
+    <img src="https://i.pinimg.com/736x/8a/e2/3c/8ae23c60b8a23bd14dd2454a1746e7f0.jpg" alt="Nguyên nhân ô nhiễm môi trường ở Hà Nội">
+</div>
+
+<div class="result">
+    <div class="text">
+        <h2>HẬU QUẢ Ô NHIỄM MÔI TRƯỜNG</h2>
+        <p>
+            Ô nhiễm môi trường gây ra nhiều hậu quả nghiêm trọng như suy giảm sức khỏe cộng đồng, ảnh hưởng đến hệ sinh thái và làm giảm chất lượng cuộc sống. Nếu không có biện pháp khắc phục, những tác động này sẽ kéo dài và ảnh hưởng đến các thế hệ tương lai.
+        </p>
+        <br>
+        <a href="hau_qua.html" target="_blank" class="btn">XEM CHI TIẾT</a>
+    </div>
+    <div class="image">
+        <img src="https://i.pinimg.com/1200x/23/88/4a/23884a02dbf73023b16014258f108ada.jpg" alt="Hậu quả ô nhiễm môi trường">
+    </div>
+</div>
+
+<div class="solution">
+    <h2>BIỆN PHÁP KHẮC PHỤC Ô NHIỄM MÔI TRƯỜNG</h2>
+    <p>
+        Để giảm thiểu ô nhiễm môi trường ở Hà Nội, cần tăng cường sử dụng phương tiện công cộng, áp dụng công nghệ xanh trong sản xuất, và nâng cao ý thức bảo vệ môi trường của người dân. Đồng thời, chính quyền cần có những chính sách quản lý rác thải và khí thải chặt chẽ hơn.
+    </p>
+    <a href="#" class="btn">XEM CHI TIẾT</a>
+</div>
+
+<div class="ending">
+    <div class="ending-right">
+        <div class='ending-box'>
+            <h3>Tìm hiểu thêm về chúng tôi</h3>
+            <p><a href="https://www.facebook.com/an.vutung/" target="_blank">Vũ Tùng An (FB)</a></p>
+            <p>Bùi Xuân An Dương</p>
+            <p>Trần Xuân Bách</p>
+        </div>
+        <div class='ending-box'>
+            <h3>Thông tin liên hệ</h3>
+            <p>Số điện thoại: 0384592667</p>
+            <p><a href="mailto:tunganvu.ptit@gmail.com" target="_blank">Gmail: tunganvu.ptit@gmail.com</a></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
