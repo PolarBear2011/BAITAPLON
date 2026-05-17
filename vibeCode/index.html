@@ -1,0 +1,1329 @@
+
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreenEarth – Bảo Vệ Môi Trường</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,900;1,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   DESIGN TOKENS & RESET
+═══════════════════════════════════════ */
+:root {
+  --green-100: #e8f5e2;
+  --green-200: #c6e6b5;
+  --green-300: #8ecf6e;
+  --green-400: #5db53a;
+  --green-500: #3a9020;
+  --green-600: #1f6610;
+  --green-700: #0d3d04;
+  --blue-100: #e0f2fe;
+  --blue-300: #7dd3fc;
+  --blue-500: #0ea5e9;
+  --blue-700: #0369a1;
+  --white: #ffffff;
+  --cream: #f7faf4;
+  --gray-100: #f1f5f0;
+  --gray-200: #dde8d9;
+  --gray-400: #8fa688;
+  --gray-600: #4a5e44;
+  --gray-900: #111a0d;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 32px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 2px 12px rgba(30,70,15,.08);
+  --shadow-md: 0 8px 32px rgba(30,70,15,.14);
+  --shadow-lg: 0 24px 64px rgba(30,70,15,.2);
+  --transition: .4s cubic-bezier(.22,1,.36,1);
+
+  /* Light mode */
+  --bg: var(--cream);
+  --surface: var(--white);
+  --text-primary: var(--gray-900);
+  --text-secondary: var(--gray-600);
+  --border: var(--gray-200);
+  --nav-bg: rgba(247,250,244,.85);
+}
+[data-theme="dark"] {
+  --bg: #0a1208;
+  --surface: #111a0d;
+  --text-primary: #e8f5e2;
+  --text-secondary: #8fa688;
+  --border: #1f3318;
+  --nav-bg: rgba(10,18,8,.9);
+  --cream: #0a1208;
+  --gray-100: #111a0d;
+  --gray-200: #1f3318;
+  --shadow-sm: 0 2px 12px rgba(0,0,0,.3);
+  --shadow-md: 0 8px 32px rgba(0,0,0,.4);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background var(--transition), color var(--transition);
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: inherit; }
+
+/* ═══════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--gray-100); }
+::-webkit-scrollbar-thumb { background: var(--green-400); border-radius: 99px; }
+
+/* ═══════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════ */
+.navbar {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px) saturate(1.5);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition), box-shadow var(--transition);
+}
+.navbar.scrolled { box-shadow: var(--shadow-md); }
+.nav-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 72px;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: .6rem;
+  font-family: var(--font-display);
+  font-weight: 600; font-size: 1.25rem;
+  color: var(--green-500);
+}
+.logo-icon {
+  width: 38px; height: 38px; background: var(--green-500);
+  border-radius: 10px; display: grid; place-items: center;
+  font-size: 1.3rem;
+}
+[data-theme="dark"] .logo-icon { background: var(--green-400); }
+
+.nav-menu {
+  display: flex; align-items: center; gap: .25rem; list-style: none;
+}
+.nav-menu a {
+  padding: .45rem .85rem; border-radius: var(--radius-pill);
+  font-size: .9rem; font-weight: 500;
+  color: var(--text-secondary);
+  transition: all .2s;
+}
+.nav-menu a:hover { color: var(--green-500); background: var(--green-100); }
+[data-theme="dark"] .nav-menu a:hover { background: rgba(94,181,58,.1); }
+
+.nav-actions { display: flex; align-items: center; gap: .75rem; }
+.btn-primary {
+  padding: .55rem 1.2rem;
+  background: var(--green-500); color: #fff;
+  border: none; border-radius: var(--radius-pill);
+  font-size: .88rem; font-weight: 600;
+  transition: all .25s;
+  white-space: nowrap;
+}
+.btn-primary:hover { background: var(--green-600); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(58,144,32,.35); }
+
+.theme-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  font-size: 1.1rem;
+  display: grid; place-items: center;
+  transition: all .2s;
+  color: var(--text-primary);
+}
+.theme-btn:hover { border-color: var(--green-400); background: var(--green-100); }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; padding: 4px;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--text-primary);
+  border-radius: 99px;
+  transition: all .3s;
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  padding: 120px 2rem 80px;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-gradient {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(94,181,58,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 60%, rgba(14,165,233,.12) 0%, transparent 60%),
+    linear-gradient(160deg, var(--cream) 0%, #dff0d8 50%, #bde0f8 100%);
+}
+[data-theme="dark"] .hero-gradient {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(94,181,58,.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 60%, rgba(14,165,233,.08) 0%, transparent 60%),
+    linear-gradient(160deg, #080f06 0%, #0c1a09 50%, #061420 100%);
+}
+
+/* Floating orbs */
+.orb {
+  position: absolute; border-radius: 50%;
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+}
+.orb-1 { width: 320px; height: 320px; background: radial-gradient(circle, rgba(94,181,58,.2), transparent); top: 5%; right: 15%; animation-delay: 0s; }
+.orb-2 { width: 200px; height: 200px; background: radial-gradient(circle, rgba(14,165,233,.15), transparent); bottom: 20%; right: 5%; animation-delay: -3s; }
+.orb-3 { width: 150px; height: 150px; background: radial-gradient(circle, rgba(94,181,58,.1), transparent); bottom: 30%; left: 8%; animation-delay: -5s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.05); }
+}
+
+/* Earth SVG */
+.hero-earth {
+  position: absolute; right: 6%; top: 50%;
+  transform: translateY(-50%);
+  width: min(420px, 40vw);
+  animation: earthRotate 30s linear infinite;
+  opacity: .85;
+}
+@keyframes earthRotate {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+/* Pause on prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) { .hero-earth, .orb { animation: none; } }
+
+.hero-content {
+  position: relative; z-index: 1;
+  max-width: 620px;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .35rem .9rem;
+  background: rgba(94,181,58,.15);
+  border: 1px solid rgba(94,181,58,.3);
+  border-radius: var(--radius-pill);
+  font-size: .82rem; font-weight: 600;
+  color: var(--green-500);
+  margin-bottom: 1.5rem;
+  animation: fadeUp .6s ease both;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+  animation: fadeUp .6s ease .1s both;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--green-500);
+}
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin-bottom: 2rem;
+  animation: fadeUp .6s ease .2s both;
+}
+.hero-cta {
+  display: flex; flex-wrap: wrap; gap: .75rem;
+  animation: fadeUp .6s ease .3s both;
+}
+.btn-outline {
+  padding: .65rem 1.4rem;
+  border: 2px solid var(--green-400);
+  border-radius: var(--radius-pill);
+  font-size: .95rem; font-weight: 600;
+  color: var(--green-500);
+  background: transparent;
+  transition: all .25s;
+}
+.btn-outline:hover { background: var(--green-400); color: #fff; }
+
+.hero-stats {
+  display: flex; gap: 2.5rem; margin-top: 3.5rem;
+  animation: fadeUp .6s ease .4s both;
+}
+.stat-item { }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 900;
+  color: var(--green-500); line-height: 1;
+}
+.stat-label { font-size: .8rem; color: var(--text-secondary); margin-top: .2rem; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════
+   SECTION SHARED
+═══════════════════════════════════════ */
+section { padding: 100px 2rem; }
+.section-inner { max-width: 1280px; margin: 0 auto; }
+.section-tag {
+  display: inline-block;
+  padding: .3rem .85rem;
+  background: var(--green-100);
+  border-radius: var(--radius-pill);
+  font-size: .8rem; font-weight: 700;
+  color: var(--green-500);
+  letter-spacing: .08em; text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+[data-theme="dark"] .section-tag { background: rgba(94,181,58,.12); }
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 900; line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.section-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 540px;
+  margin-bottom: 3rem;
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0; transform: translateY(36px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+/* ═══════════════════════════════════════
+   THỰC TRẠNG – STATS CARDS
+═══════════════════════════════════════ */
+.stats-section { background: var(--surface); }
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.stat-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  position: relative; overflow: hidden;
+  transition: all .35s var(--transition);
+  cursor: default;
+}
+.stat-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--card-gradient, linear-gradient(135deg, rgba(94,181,58,.05), transparent));
+  transition: opacity .35s;
+  opacity: 0;
+}
+.stat-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--card-color, var(--green-300)); }
+.stat-card:hover::before { opacity: 1; }
+
+.card-air { --card-color: #5db53a; --card-gradient: linear-gradient(135deg, rgba(93,181,58,.08), transparent); }
+.card-water { --card-color: #0ea5e9; --card-gradient: linear-gradient(135deg, rgba(14,165,233,.08), transparent); }
+.card-plastic { --card-color: #f59e0b; --card-gradient: linear-gradient(135deg, rgba(245,158,11,.08), transparent); }
+
+.card-icon {
+  width: 56px; height: 56px;
+  border-radius: var(--radius-sm);
+  display: grid; place-items: center;
+  font-size: 1.6rem;
+  margin-bottom: 1.25rem;
+  background: var(--card-icon-bg, var(--green-100));
+  transition: transform .3s;
+}
+.stat-card:hover .card-icon { transform: scale(1.1) rotate(-5deg); }
+.card-air .card-icon { background: rgba(93,181,58,.1); }
+.card-water .card-icon { background: rgba(14,165,233,.1); }
+.card-plastic .card-icon { background: rgba(245,158,11,.1); }
+
+.card-number {
+  font-family: var(--font-display);
+  font-size: 2.5rem; font-weight: 900; line-height: 1;
+  color: var(--card-color, var(--green-500));
+  margin-bottom: .35rem;
+}
+.card-title { font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; }
+.card-text { font-size: .9rem; color: var(--text-secondary); line-height: 1.55; }
+
+.progress-bar-wrap {
+  margin-top: 1.25rem;
+  height: 6px; background: var(--border);
+  border-radius: 99px; overflow: hidden;
+}
+.progress-bar {
+  height: 100%; border-radius: 99px;
+  background: var(--card-color, var(--green-400));
+  width: 0; transition: width 1.4s cubic-bezier(.22,1,.36,1);
+}
+
+/* ═══════════════════════════════════════
+   NGUYÊN NHÂN – CAUSES
+═══════════════════════════════════════ */
+.causes-section { background: var(--bg); }
+.causes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem; margin-top: 3rem;
+}
+.cause-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  transition: all .3s;
+  position: relative; overflow: hidden;
+}
+.cause-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 3px; background: var(--green-400);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .35s;
+}
+.cause-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.cause-card:hover::after { transform: scaleX(1); }
+
+.cause-emoji { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+.cause-title { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
+.cause-text { font-size: .875rem; color: var(--text-secondary); line-height: 1.5; }
+
+/* ═══════════════════════════════════════
+   GIẢI PHÁP – SOLUTIONS TIMELINE
+═══════════════════════════════════════ */
+.solutions-section { background: var(--surface); }
+.solutions-timeline { margin-top: 3.5rem; position: relative; }
+.solutions-timeline::before {
+  content: '';
+  position: absolute; left: 28px; top: 0; bottom: 0;
+  width: 2px; background: linear-gradient(180deg, var(--green-400), var(--blue-500));
+}
+.timeline-item {
+  display: flex; gap: 2rem; margin-bottom: 2.5rem;
+  padding-left: .25rem;
+}
+.timeline-dot {
+  width: 58px; height: 58px; border-radius: 50%;
+  background: var(--green-500);
+  display: grid; place-items: center;
+  font-size: 1.5rem; flex-shrink: 0;
+  box-shadow: 0 0 0 6px var(--surface), 0 0 0 8px var(--green-200);
+  transition: transform .3s;
+  position: relative; z-index: 1;
+}
+[data-theme="dark"] .timeline-dot { box-shadow: 0 0 0 6px var(--surface), 0 0 0 8px rgba(94,181,58,.3); }
+.timeline-item:hover .timeline-dot { transform: scale(1.15); }
+
+.timeline-content {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.75rem;
+  flex: 1;
+  transition: all .3s;
+}
+.timeline-item:hover .timeline-content { box-shadow: var(--shadow-md); border-color: var(--green-300); }
+.timeline-title { font-size: 1.05rem; font-weight: 700; margin-bottom: .4rem; }
+.timeline-text { font-size: .9rem; color: var(--text-secondary); }
+.timeline-tag {
+  display: inline-block; margin-top: .75rem;
+  padding: .2rem .7rem;
+  background: var(--green-100); border-radius: var(--radius-pill);
+  font-size: .75rem; font-weight: 600; color: var(--green-600);
+}
+[data-theme="dark"] .timeline-tag { background: rgba(94,181,58,.12); color: var(--green-300); }
+
+/* ═══════════════════════════════════════
+   GALLERY
+═══════════════════════════════════════ */
+.gallery-section { background: var(--bg); }
+.gallery-intro { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 260px);
+  gap: 1rem;
+}
+.gallery-item {
+  border-radius: var(--radius-md); overflow: hidden;
+  position: relative; cursor: pointer;
+}
+.gallery-item:first-child { grid-row: span 2; }
+.gallery-item:nth-child(4) { grid-column: span 2; }
+
+.gallery-img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .6s var(--transition);
+}
+.gallery-item:hover .gallery-img { transform: scale(1.07); }
+
+.gallery-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,20,5,.7) 0%, transparent 60%);
+  opacity: 0; transition: opacity .35s;
+  display: flex; align-items: flex-end; padding: 1.25rem;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-label {
+  color: #fff; font-size: .9rem; font-weight: 600;
+  transform: translateY(8px);
+  transition: transform .35s;
+}
+.gallery-item:hover .gallery-label { transform: translateY(0); }
+
+/* Placeholder gallery images using CSS gradients */
+.img-before-1 { background: linear-gradient(135deg, #2d6a4f 0%, #1b4332 40%, #081c15 100%); }
+.img-after-1  { background: linear-gradient(135deg, #6d2b2b 0%, #a5232b 50%, #7a0f11 100%); }
+.img-before-2 { background: linear-gradient(135deg, #48cae4 0%, #023e8a 100%); }
+.img-after-2  { background: linear-gradient(135deg, #4a4e69 0%, #1d3557 100%); }
+.img-before-3 { background: linear-gradient(135deg, #a7c957 0%, #386641 100%); }
+
+.gallery-css-img {
+  width: 100%; height: 100%;
+  position: relative; overflow: hidden;
+}
+.gallery-css-img::before, .gallery-css-img::after {
+  content: ''; position: absolute;
+}
+/* Forest before */
+.img-before-1::before {
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cellipse cx='100' cy='180' rx='180' ry='40' fill='%230d2b1a' opacity='.6'/%3E%3Ccircle cx='60' cy='120' r='55' fill='%232d6a4f'/%3E%3Ccircle cx='100' cy='100' r='65' fill='%2340916c'/%3E%3Ccircle cx='145' cy='115' r='50' fill='%2352b788'/%3E%3Ccircle cx='85' cy='85' r='40' fill='%2374c69d'/%3E%3C/svg%3E") center/cover;
+}
+/* Polluted city after */
+.img-after-1::before {
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23220a0a'/%3E%3Crect x='10' y='100' width='30' height='100' fill='%23400f0f'/%3E%3Crect x='50' y='70' width='40' height='130' fill='%23361010'/%3E%3Crect x='100' y='85' width='35' height='115' fill='%23451515'/%3E%3Crect x='145' y='55' width='45' height='145' fill='%23380d0d'/%3E%3Cellipse cx='100' cy='90' rx='100' ry='30' fill='%23800020' opacity='.5'/%3E%3C/svg%3E") center/cover;
+}
+/* Clean ocean */
+.img-before-2::before {
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%2348cae4'/%3E%3Cellipse cx='100' cy='190' rx='120' ry='60' fill='%230077b6' opacity='.7'/%3E%3Ccircle cx='100' cy='40' rx='40' ry='40' fill='%23ade8f4' opacity='.4'/%3E%3C/svg%3E") center/cover;
+}
+/* Polluted ocean */
+.img-after-2::before {
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%231d3557'/%3E%3Cellipse cx='100' cy='180' rx='120' ry='50' fill='%234a4e69' opacity='.8'/%3E%3Ccircle cx='40' cy='150' r='15' fill='%236b6b6b' opacity='.7'/%3E%3Ccircle cx='90' cy='155' r='8' fill='%235a5a5a'/%3E%3Ccircle cx='140' cy='145' r='20' fill='%23555' opacity='.6'/%3E%3C/svg%3E") center/cover;
+}
+/* Green field */
+.img-before-3::before {
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23a7c957'/%3E%3Cellipse cx='100' cy='180' rx='150' ry='60' fill='%23386641' opacity='.7'/%3E%3Ccircle cx='30' cy='130' r='40' fill='%2356a33e'/%3E%3Ccircle cx='165' cy='120' r='35' fill='%2358a43e'/%3E%3C/svg%3E") center/cover;
+}
+
+/* ═══════════════════════════════════════
+   CTA SECTION
+═══════════════════════════════════════ */
+.cta-section {
+  background: linear-gradient(135deg, var(--green-600) 0%, var(--green-500) 40%, var(--blue-700) 100%);
+  color: #fff; position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255,255,255,.15)'/%3E%3C/svg%3E");
+  animation: bgScroll 20s linear infinite;
+}
+@keyframes bgScroll { from { background-position: 0 0; } to { background-position: 60px 60px; } }
+
+.cta-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  position: relative; z-index: 1;
+}
+.cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 900; line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.cta-desc { opacity: .85; font-size: 1.05rem; line-height: 1.6; }
+
+.signup-form {
+  background: rgba(255,255,255,.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+}
+.form-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; }
+.form-group { margin-bottom: 1rem; }
+.form-group input, .form-group select {
+  width: 100%; padding: .8rem 1rem;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: var(--radius-sm);
+  color: #fff; font-family: inherit; font-size: .95rem;
+  outline: none; transition: border-color .2s;
+}
+.form-group input::placeholder { color: rgba(255,255,255,.65); }
+.form-group input:focus, .form-group select:focus { border-color: rgba(255,255,255,.7); }
+.form-group select { appearance: none; cursor: pointer; }
+.form-group select option { background: var(--green-700); color: #fff; }
+
+.btn-submit {
+  width: 100%; padding: .9rem;
+  background: #fff; color: var(--green-600);
+  border: none; border-radius: var(--radius-sm);
+  font-size: 1rem; font-weight: 700;
+  transition: all .25s; margin-top: .5rem;
+}
+.btn-submit:hover { background: var(--green-100); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer {
+  background: var(--gray-900); color: var(--gray-200);
+  padding: 60px 2rem 30px;
+}
+[data-theme="dark"] footer { background: #050a04; }
+.footer-inner { max-width: 1280px; margin: 0 auto; }
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem;
+  margin-bottom: 3rem;
+}
+.footer-brand .nav-logo { color: var(--green-300); margin-bottom: 1rem; }
+.footer-desc { font-size: .9rem; color: #6b7f65; line-height: 1.65; max-width: 260px; }
+.footer-col-title {
+  font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--green-400); margin-bottom: 1.1rem;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+.footer-links a { font-size: .9rem; color: #6b7f65; transition: color .2s; }
+.footer-links a:hover { color: var(--green-300); }
+
+.social-icons { display: flex; gap: .75rem; margin-top: 1.5rem; }
+.social-icon {
+  width: 38px; height: 38px; border-radius: 8px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  display: grid; place-items: center;
+  font-size: 1rem; text-decoration: none;
+  color: #6b7f65;
+  transition: all .2s;
+}
+.social-icon:hover { background: var(--green-600); border-color: var(--green-500); color: #fff; transform: translateY(-2px); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.07);
+  padding-top: 1.5rem;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-copy { font-size: .85rem; color: #4a5e44; }
+.footer-legal { display: flex; gap: 1.5rem; }
+.footer-legal a { font-size: .85rem; color: #4a5e44; transition: color .2s; }
+.footer-legal a:hover { color: var(--green-400); }
+
+/* ═══════════════════════════════════════
+   SCROLL TO TOP
+═══════════════════════════════════════ */
+.scroll-top {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--green-500); color: #fff; border: none;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-md);
+  opacity: 0; transform: translateY(16px);
+  transition: all .3s; pointer-events: none;
+  display: grid; place-items: center;
+}
+.scroll-top.visible { opacity: 1; transform: none; pointer-events: auto; }
+.scroll-top:hover { background: var(--green-600); transform: translateY(-3px); }
+
+/* ═══════════════════════════════════════
+   MOBILE MENU
+═══════════════════════════════════════ */
+.mobile-menu {
+  position: fixed; top: 72px; left: 0; width: 100%; z-index: 999;
+  background: var(--nav-bg); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem 1.5rem;
+  transform: translateY(-120%);
+  transition: transform .4s cubic-bezier(.22,1,.36,1);
+  display: none;
+}
+.mobile-menu.open { transform: translateY(0); }
+.mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: .25rem; }
+.mobile-menu a {
+  display: block; padding: .65rem 1rem;
+  border-radius: var(--radius-sm);
+  font-weight: 500; color: var(--text-primary);
+  transition: all .2s;
+}
+.mobile-menu a:hover { background: var(--green-100); color: var(--green-600); }
+.mobile-menu .btn-primary { margin-top: .75rem; display: block; text-align: center; }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .cta-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero-earth { width: 35vw; opacity: .5; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  section { padding: 70px 1.25rem; }
+  .nav-menu, .nav-actions .btn-primary { display: none; }
+  .hamburger { display: flex; }
+  .mobile-menu { display: block; }
+  .hero { padding: 110px 1.25rem 60px; }
+  .hero-earth { display: none; }
+  .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .gallery-item:first-child { grid-row: span 1; }
+  .gallery-item:nth-child(4) { grid-column: span 1; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-desc { max-width: 100%; }
+  .solutions-timeline::before { left: 24px; }
+  .timeline-dot { width: 50px; height: 50px; font-size: 1.2rem; }
+}
+@media (max-width: 480px) {
+  .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .gallery-item { height: 200px; }
+  .hero-cta { flex-direction: column; }
+  .btn-primary, .btn-outline { width: 100%; text-align: center; display: block; padding: .75rem; }
+}
+
+/* ═══════════════════════════════════════
+   PARTICLES (Canvas)
+═══════════════════════════════════════ */
+#particles { position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: .6; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-icon">🌿</div>
+      GreenEarth
+    </a>
+    <ul class="nav-menu">
+      <li><a href="#hero">Trang chủ</a></li>
+      <li><a href="#thuc-trang">Thực trạng</a></li>
+      <li><a href="#nguyen-nhan">Nguyên nhân</a></li>
+      <li><a href="#giai-phap">Giải pháp</a></li>
+      <li><a href="#lien-he">Liên hệ</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-btn" id="themeBtn" title="Chuyển chế độ">🌙</button>
+      <a href="#lien-he" class="btn-primary">🌱 Chung tay bảo vệ</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#hero" onclick="closeMobile()">🏠 Trang chủ</a></li>
+    <li><a href="#thuc-trang" onclick="closeMobile()">📊 Thực trạng</a></li>
+    <li><a href="#nguyen-nhan" onclick="closeMobile()">🔍 Nguyên nhân</a></li>
+    <li><a href="#giai-phap" onclick="closeMobile()">💡 Giải pháp</a></li>
+    <li><a href="#lien-he" onclick="closeMobile()">📬 Liên hệ</a></li>
+  </ul>
+  <a href="#lien-he" class="btn-primary" onclick="closeMobile()">🌱 Chung tay bảo vệ môi trường</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <canvas id="particles"></canvas>
+  <div class="hero-bg">
+    <div class="hero-gradient"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- SVG Earth -->
+  <svg class="hero-earth" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <radialGradient id="earthGrad" cx="35%" cy="35%">
+        <stop offset="0%" stop-color="#74c69d"/>
+        <stop offset="40%" stop-color="#2d6a4f"/>
+        <stop offset="100%" stop-color="#081c15"/>
+      </radialGradient>
+      <radialGradient id="oceanGrad" cx="50%" cy="50%">
+        <stop offset="0%" stop-color="#48cae4"/>
+        <stop offset="100%" stop-color="#023e8a"/>
+      </radialGradient>
+    </defs>
+    <circle cx="100" cy="100" r="90" fill="url(#oceanGrad)" opacity=".9"/>
+    <!-- Continents -->
+    <ellipse cx="80" cy="75" rx="25" ry="30" fill="url(#earthGrad)" transform="rotate(-20 80 75)"/>
+    <ellipse cx="115" cy="90" rx="18" ry="22" fill="#40916c" transform="rotate(10 115 90)"/>
+    <ellipse cx="70" cy="115" rx="15" ry="18" fill="#2d6a4f" transform="rotate(-5 70 115)"/>
+    <ellipse cx="130" cy="120" rx="12" ry="16" fill="#52b788" transform="rotate(15 130 120)"/>
+    <!-- Clouds -->
+    <ellipse cx="90" cy="55" rx="20" ry="7" fill="white" opacity=".4"/>
+    <ellipse cx="130" cy="70" rx="15" ry="5" fill="white" opacity=".3"/>
+    <ellipse cx="60" cy="130" rx="18" ry="6" fill="white" opacity=".35"/>
+    <!-- Shine -->
+    <circle cx="65" cy="60" r="18" fill="white" opacity=".08"/>
+    <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(116,198,157,.3)" stroke-width="2"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-tag">🌍 Chiến dịch môi trường 2025</div>
+    <h1 class="hero-title">
+      Hãy hành động ngay<br>vì một <em>Trái Đất xanh</em>
+    </h1>
+    <p class="hero-desc">
+      Mỗi năm, hàng tỷ tấn rác thải, khí độc hại và hóa chất được thải vào môi trường.
+      Chúng ta cần hành động ngay hôm nay — trước khi quá muộn.
+    </p>
+    <div class="hero-cta">
+      <a href="#thuc-trang" class="btn-primary" style="font-size:1rem;padding:.75rem 1.75rem;">🔍 Tìm hiểu thêm</a>
+      <a href="#lien-he" class="btn-outline">Tham gia chiến dịch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num" data-count="8">0</div>
+        <div class="stat-label">Triệu tấn nhựa/năm<br>đổ ra đại dương</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-count="91">0</div>
+        <div class="stat-label">% không khí thế giới<br>bị ô nhiễm</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-count="2">0</div>
+        <div class="stat-label">°C nhiệt độ tăng<br>trong 100 năm qua</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THỰC TRẠNG -->
+<section class="stats-section" id="thuc-trang">
+  <div class="section-inner">
+    <span class="section-tag reveal">📊 Thực trạng</span>
+    <h2 class="section-title reveal reveal-delay-1">Ô nhiễm môi trường<br>đang ở mức báo động</h2>
+    <p class="section-desc reveal reveal-delay-2">Những con số thống kê dưới đây cho thấy thực trạng đáng lo ngại về môi trường sống của chúng ta hiện nay.</p>
+
+    <div class="stats-grid">
+      <div class="stat-card card-air reveal">
+        <div class="card-icon">💨</div>
+        <div class="card-number">7M+</div>
+        <div class="card-title">Ô nhiễm không khí</div>
+        <div class="card-text">Hơn 7 triệu người tử vong mỗi năm do ô nhiễm không khí. Bụi mịn PM2.5 là kẻ giết người thầm lặng trong không khí đô thị.</div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" data-width="85"></div>
+        </div>
+      </div>
+      <div class="stat-card card-water reveal reveal-delay-1">
+        <div class="card-icon">💧</div>
+        <div class="card-number">2.2B</div>
+        <div class="card-title">Ô nhiễm nguồn nước</div>
+        <div class="card-text">2.2 tỷ người thiếu nước sạch để uống. 80% nước thải công nghiệp không được xử lý trước khi xả thải ra sông, biển.</div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" data-width="78"></div>
+        </div>
+      </div>
+      <div class="stat-card card-plastic reveal reveal-delay-2">
+        <div class="card-icon">♻️</div>
+        <div class="card-number">380M</div>
+        <div class="card-title">Rác thải nhựa</div>
+        <div class="card-text">380 triệu tấn nhựa được sản xuất mỗi năm, chỉ 9% trong số đó được tái chế. Nhựa tồn tại hàng trăm năm trong tự nhiên.</div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" data-width="91"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NGUYÊN NHÂN -->
+<section class="causes-section" id="nguyen-nhan">
+  <div class="section-inner">
+    <span class="section-tag reveal">🔍 Nguyên nhân</span>
+    <h2 class="section-title reveal reveal-delay-1">Tại sao môi trường<br>đang bị tàn phá?</h2>
+    <p class="section-desc reveal reveal-delay-2">Nhiều hoạt động của con người đang gây ra những tác hại không thể đảo ngược với hành tinh chúng ta.</p>
+
+    <div class="causes-grid">
+      <div class="cause-card reveal">
+        <span class="cause-emoji">🏭</span>
+        <div class="cause-title">Khói thải công nghiệp</div>
+        <div class="cause-text">Các nhà máy, khu công nghiệp xả khí CO₂, SO₂ và các chất độc hại làm ô nhiễm không khí và mưa axit.</div>
+      </div>
+      <div class="cause-card reveal reveal-delay-1">
+        <span class="cause-emoji">🚗</span>
+        <div class="cause-title">Phương tiện giao thông</div>
+        <div class="cause-text">Hàng tỷ xe cộ thải khí thải chứa CO₂ và hạt bụi mịn vào không khí mỗi ngày, là nguyên nhân chính của hiệu ứng nhà kính.</div>
+      </div>
+      <div class="cause-card reveal reveal-delay-2">
+        <span class="cause-emoji">🌳</span>
+        <div class="cause-title">Phá rừng</div>
+        <div class="cause-text">Mỗi phút có 36 sân bóng đá rừng bị chặt phá. Rừng nhiệt đới mất đi là mất đi lá phổi của hành tinh.</div>
+      </div>
+      <div class="cause-card reveal reveal-delay-3">
+        <span class="cause-emoji">🛢️</span>
+        <div class="cause-title">Tràn dầu & hóa chất</div>
+        <div class="cause-text">Các vụ tràn dầu và xả thải hóa chất công nghiệp tiêu diệt hệ sinh thái biển và sông ngòi, ảnh hưởng hàng thế kỷ.</div>
+      </div>
+      <div class="cause-card reveal">
+        <span class="cause-emoji">🗑️</span>
+        <div class="cause-title">Rác thải sinh hoạt</div>
+        <div class="cause-text">Hàng trăm triệu tấn rác sinh hoạt, túi nhựa, chai lọ nhựa không phân hủy đang lấp đầy bãi rác và đại dương.</div>
+      </div>
+      <div class="cause-card reveal reveal-delay-1">
+        <span class="cause-emoji">🌾</span>
+        <div class="cause-title">Nông nghiệp hóa học</div>
+        <div class="cause-text">Sử dụng quá mức thuốc trừ sâu và phân bón hóa học gây ô nhiễm đất và nguồn nước ngầm nghiêm trọng.</div>
+      </div>
+      <div class="cause-card reveal reveal-delay-2">
+        <span class="cause-emoji">⚡</span>
+        <div class="cause-title">Năng lượng than đá</div>
+        <div class="cause-text">Đốt than phát thải lượng CO₂ khổng lồ và thủy ngân độc hại vào môi trường, đóng góp lớn vào biến đổi khí hậu toàn cầu.</div>
+      </div>
+      <div class="cause-card reveal reveal-delay-3">
+        <span class="cause-emoji">📦</span>
+        <div class="cause-title">Tiêu dùng quá mức</div>
+        <div class="cause-text">Văn hóa "mua và bỏ" của thời đại hiện đại tạo ra lượng rác thải khổng lồ, vượt quá khả năng tái chế của hành tinh.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GIẢI PHÁP -->
+<section class="solutions-section" id="giai-phap">
+  <div class="section-inner">
+    <span class="section-tag reveal">💡 Giải pháp</span>
+    <h2 class="section-title reveal reveal-delay-1">Chúng ta có thể<br>thay đổi điều này</h2>
+    <p class="section-desc reveal reveal-delay-2">Mỗi hành động dù nhỏ bé đều có tác động lớn. Hãy bắt đầu từ những việc đơn giản nhất mỗi ngày.</p>
+
+    <div class="solutions-timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">🌳</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Trồng cây – Hồi sinh màu xanh</div>
+          <div class="timeline-text">Mỗi cây xanh hấp thụ khoảng 22kg CO₂ mỗi năm. Trồng một cây là tặng cho Trái Đất một chiếc máy lọc khí tự nhiên. Tham gia các chương trình trồng rừng cộng đồng tại địa phương.</div>
+          <div class="timeline-tag">🌿 Tác động cao</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="timeline-dot">🚫</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Nói không với nhựa dùng một lần</div>
+          <div class="timeline-text">Mang túi vải, bình nước riêng và từ chối ống hút nhựa. Nếu 1 triệu người làm điều này mỗi ngày, hàng tỷ mảnh nhựa sẽ không bao giờ đến đại dương.</div>
+          <div class="timeline-tag">♻️ Dễ thực hiện</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="timeline-dot">💡</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Tiết kiệm điện – nước</div>
+          <div class="timeline-text">Tắt đèn khi ra khỏi phòng, dùng bóng LED, tắt vòi nước khi không dùng. Năng lượng tiết kiệm = giảm đốt than = ít khí CO₂ hơn.</div>
+          <div class="timeline-tag">⚡ Tiết kiệm chi phí</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-3">
+        <div class="timeline-dot">🔄</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Phân loại và tái chế rác</div>
+          <div class="timeline-text">Phân loại rác hữu cơ, vô cơ và tái chế tại nguồn. Giảm thiểu lượng rác đến bãi chôn lấp và tận dụng tối đa vật liệu đã qua sử dụng.</div>
+          <div class="timeline-tag">🗑️ Thói quen tốt</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">🚲</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Di chuyển xanh</div>
+          <div class="timeline-text">Đi bộ, đạp xe hoặc sử dụng phương tiện công cộng thay vì xe cá nhân. Mỗi km không dùng xe hơi là bạn ngăn 150g CO₂ thải vào không khí.</div>
+          <div class="timeline-tag">🌍 Vì khí hậu</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="section-inner">
+    <div class="gallery-intro">
+      <div>
+        <span class="section-tag reveal">📸 Hình ảnh</span>
+        <h2 class="section-title reveal reveal-delay-1">Trước và sau<br>ô nhiễm môi trường</h2>
+      </div>
+      <p class="reveal" style="max-width:320px;color:var(--text-secondary);font-size:.95rem;">Những hình ảnh ghi lại sự thay đổi đáng sợ của thiên nhiên qua thời gian do tác động của con người.</p>
+    </div>
+
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <div class="gallery-css-img img-before-1"></div>
+        <div class="gallery-overlay">
+          <div class="gallery-label">🌿 Rừng Amazon – Trước khi bị phá</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-css-img img-before-2"></div>
+        <div class="gallery-overlay">
+          <div class="gallery-label">🌊 Đại dương trong lành</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-css-img img-before-3"></div>
+        <div class="gallery-overlay">
+          <div class="gallery-label">🌾 Đồng xanh bát ngát</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-css-img img-after-1"></div>
+        <div class="gallery-overlay">
+          <div class="gallery-label">🏭 Đô thị bị khói bao phủ</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-css-img img-after-2"></div>
+        <div class="gallery-overlay">
+          <div class="gallery-label">🗑️ Đại dương đầy rác thải</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="lien-he">
+  <div class="cta-inner section-inner">
+    <div>
+      <span class="section-tag reveal" style="background:rgba(255,255,255,.15);color:#fff;border:none;">🌱 Hành động ngay</span>
+      <h2 class="cta-title reveal reveal-delay-1">Mỗi hành động nhỏ hôm nay sẽ tạo nên thay đổi lớn cho tương lai</h2>
+      <p class="cta-desc reveal reveal-delay-2">Đăng ký tham gia chiến dịch bảo vệ môi trường của chúng tôi. Cùng nhau, chúng ta có thể tạo ra sự khác biệt cho thế hệ mai sau.</p>
+
+      <div style="display:flex;gap:2rem;margin-top:2.5rem;" class="reveal reveal-delay-3">
+        <div>
+          <div style="font-family:var(--font-display);font-size:2rem;font-weight:900;">50K+</div>
+          <div style="opacity:.75;font-size:.85rem;">Thành viên tham gia</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:2rem;font-weight:900;">120+</div>
+          <div style="opacity:.75;font-size:.85rem;">Chiến dịch thành công</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:2rem;font-weight:900;">63</div>
+          <div style="opacity:.75;font-size:.85rem;">Tỉnh thành tham gia</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="signup-form reveal reveal-delay-2">
+      <div class="form-title">🌿 Đăng ký tham gia chiến dịch</div>
+      <div class="form-group">
+        <input type="text" placeholder="Họ và tên của bạn" id="formName">
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder="Địa chỉ email" id="formEmail">
+      </div>
+      <div class="form-group">
+        <select id="formCampaign">
+          <option value="" disabled selected>Chọn chiến dịch tham gia...</option>
+          <option>🌳 Trồng 1 triệu cây xanh</option>
+          <option>🗑️ Dọn rác bờ biển</option>
+          <option>♻️ Phân loại rác tại nguồn</option>
+          <option>🚲 Di chuyển xanh</option>
+          <option>💧 Bảo vệ nguồn nước</option>
+        </select>
+      </div>
+      <button class="btn-submit" onclick="submitForm()">Đăng ký ngay →</button>
+      <p style="font-size:.78rem;opacity:.65;margin-top:.75rem;text-align:center;">Hoàn toàn miễn phí. Chúng tôi không gửi spam.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <div class="logo-icon">🌿</div>
+          GreenEarth
+        </div>
+        <p class="footer-desc">Tổ chức phi lợi nhuận hướng tới một hành tinh xanh hơn, sạch hơn cho thế hệ tương lai. Mỗi hành động của bạn đều có ý nghĩa.</p>
+        <div class="social-icons">
+          <a class="social-icon" href="#" title="Facebook">𝕗</a>
+          <a class="social-icon" href="#" title="Instagram">📸</a>
+          <a class="social-icon" href="#" title="YouTube">▶</a>
+          <a class="social-icon" href="#" title="TikTok">♪</a>
+          <a class="social-icon" href="#" title="Twitter/X">𝕏</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Khám phá</div>
+        <ul class="footer-links">
+          <li><a href="#thuc-trang">Thực trạng ô nhiễm</a></li>
+          <li><a href="#nguyen-nhan">Nguyên nhân</a></li>
+          <li><a href="#giai-phap">Giải pháp xanh</a></li>
+          <li><a href="#gallery">Hình ảnh môi trường</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Tham gia</div>
+        <ul class="footer-links">
+          <li><a href="#lien-he">Đăng ký chiến dịch</a></li>
+          <li><a href="#">Tình nguyện viên</a></li>
+          <li><a href="#">Quyên góp</a></li>
+          <li><a href="#">Doanh nghiệp xanh</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Liên hệ</div>
+        <ul class="footer-links">
+          <li><a href="mailto:info@greenearth.vn">📧 info@greenearth.vn</a></li>
+          <li><a href="#">📞 1800 1234</a></li>
+          <li><a href="#">📍 Hà Nội, Việt Nam</a></li>
+          <li><a href="#">📰 Bản tin hàng tuần</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 GreenEarth Vietnam. Bảo lưu mọi quyền. Made with 💚 for the planet.</div>
+      <div class="footer-legal">
+        <a href="#">Chính sách bảo mật</a>
+        <a href="#">Điều khoản sử dụng</a>
+        <a href="#">Cookie</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Lên đầu trang">↑</button>
+
+<script>
+/* ─── THEME TOGGLE ─── */
+const html = document.documentElement;
+const themeBtn = document.getElementById('themeBtn');
+let darkMode = false;
+
+themeBtn.addEventListener('click', () => {
+  darkMode = !darkMode;
+  html.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+  themeBtn.textContent = darkMode ? '☀️' : '🌙';
+});
+
+/* ─── NAVBAR SCROLL ─── */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 30);
+  document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+});
+
+/* ─── HAMBURGER ─── */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+function closeMobile() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+}
+
+/* ─── REVEAL ON SCROLL ─── */
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // Animate progress bars
+      const bar = e.target.querySelector('.progress-bar');
+      if (bar) {
+        setTimeout(() => {
+          bar.style.width = bar.dataset.width + '%';
+        }, 200);
+      }
+    }
+  });
+}, { threshold: 0.15 });
+reveals.forEach(el => observer.observe(el));
+
+/* ─── PROGRESS BARS GLOBAL ─── */
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const bars = e.target.querySelectorAll('.progress-bar');
+      bars.forEach(b => {
+        setTimeout(() => b.style.width = b.dataset.width + '%', 400);
+      });
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.stat-card').forEach(c => barObs.observe(c));
+
+/* ─── COUNTER ANIMATION ─── */
+const counters = document.querySelectorAll('[data-count]');
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const target = parseInt(e.target.dataset.count);
+      const suffix = e.target.dataset.suffix || '';
+      let current = 0;
+      const step = target / 60;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        e.target.textContent = Math.floor(current) + suffix;
+      }, 16);
+      counterObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => counterObs.observe(c));
+
+/* ─── PARTICLES CANVAS ─── */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resize() {
+  canvas.width = canvas.parentElement.offsetWidth;
+  canvas.height = canvas.parentElement.offsetHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.r = Math.random() * 3 + 1;
+    this.vx = (Math.random() - .5) * .4;
+    this.vy = -Math.random() * .6 - .2;
+    this.alpha = Math.random() * .4 + .1;
+    this.color = Math.random() > .5 ? '#5db53a' : '#48cae4';
+  }
+  update() {
+    this.x += this.vx; this.y += this.vy;
+    if (this.y < -10 || this.x < -10 || this.x > canvas.width + 10) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.globalAlpha = this.alpha;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+}
+
+for (let i = 0; i < 60; i++) particles.push(new Particle());
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+/* ─── FORM SUBMIT ─── */
+function submitForm() {
+  const name = document.getElementById('formName').value.trim();
+  const email = document.getElementById('formEmail').value.trim();
+  const campaign = document.getElementById('formCampaign').value;
+
+  if (!name || !email || !campaign) {
+    showToast('⚠️ Vui lòng điền đầy đủ thông tin!', '#f59e0b');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showToast('⚠️ Email không hợp lệ!', '#f59e0b');
+    return;
+  }
+  showToast('🌱 Đăng ký thành công! Cảm ơn bạn đã tham gia!', '#3a9020');
+  document.getElementById('formName').value = '';
+  document.getElementById('formEmail').value = '';
+  document.getElementById('formCampaign').value = '';
+}
+
+function showToast(msg, color) {
+  const t = document.createElement('div');
+  t.style.cssText = `
+    position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);
+    background:${color};color:#fff;padding:.85rem 1.75rem;
+    border-radius:99px;font-weight:600;font-size:.95rem;
+    z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,.2);
+    animation:toastIn .3s ease;
+  `;
+  t.textContent = msg;
+  const style = document.createElement('style');
+  style.textContent = '@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(16px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}';
+  document.head.appendChild(style);
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3500);
+}
+
+/* ─── SMOOTH ANCHOR ─── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id === '#') return;
+    const el = document.querySelector(id);
+    if (el) {
+      e.preventDefault();
+      const offset = 80;
+      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+
+/* ─── PARALLAX (hero orbs) ─── */
+window.addEventListener('mousemove', (e) => {
+  const orbs = document.querySelectorAll('.orb');
+  const mx = (e.clientX / window.innerWidth - .5) * 20;
+  const my = (e.clientY / window.innerHeight - .5) * 20;
+  orbs.forEach((orb, i) => {
+    const factor = (i + 1) * .5;
+    orb.style.transform = `translate(${mx * factor}px, ${my * factor}px)`;
+  });
+});
+</script>
+</body>
+</html>
