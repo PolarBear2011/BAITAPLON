@@ -468,11 +468,10 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
   .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem 0; }
   .scroll-top { width: 38px; height: 38px; bottom: 1.5rem; right: 1.5rem; font-size: 1rem; }
 }
-
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -480,50 +479,69 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f4f4f9;
+    background-color: #0b1a20; /* Màu nền tối giống web của bạn */
 }
 
-
-.slider-container {
+/* ================== */
+/* KHUNG SLIDER       */
+/* ================== */
+.fade-slider {
+    position: relative;
     width: 800px;
-    max-width: 100%;
-    height: 400px;
-    overflow: hidden; 
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    max-width: 90%;
+    height: 450px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
 }
 
-
-.slider-wrapper {
-    display: flex;
-    width: 400%; 
+/* ================== */
+/* CÁC BỨC ẢNH        */
+/* ================== */
+.fade-slider img {
+    position: absolute; /* Xếp chồng các ảnh lên nhau */
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-   
-    animation: slide 16s infinite;
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+    opacity: 0; /* Ẩn tất cả ảnh lúc ban đầu */
+    
+    /* Gọi hiệu ứng fade: Tổng thời gian 16s (mỗi ảnh 4s) */
+    animation: fadeEffect 16s infinite;
 }
 
-
-.slider-wrapper img {
-    width: 25%; 
-    height: 100%;
-    object-fit: cover;
+/* Đặt độ trễ (delay) cho từng ảnh để chúng xuất hiện lần lượt */
+.fade-slider img:nth-child(1) {
+    animation-delay: 0s;
+}
+.fade-slider img:nth-child(2) {
+    animation-delay: 4s;
+}
+.fade-slider img:nth-child(3) {
+    animation-delay: 8s;
+}
+.fade-slider img:nth-child(4) {
+    animation-delay: 12s;
 }
 
-
-@keyframes slide {
-    0%, 20% {
-        transform: translateX(0%); /* Ảnh 1 */
+/* ================== */
+/* KEYFRAMES MỜ DẦN   */
+/* ================== */
+@keyframes fadeEffect {
+    0% {
+        opacity: 0;
     }
-    25%, 45% {
-        transform: translateX(-25%); /* Ảnh 2 */
+    5% {
+        opacity: 1; /* Ảnh hiện rõ dần lên */
     }
-    50%, 70% {
-        transform: translateX(-50%); /* Ảnh 3 */
+    25% {
+        opacity: 1; /* Giữ nguyên trạng thái hiện rõ để người dùng xem */
     }
-    75%, 95% {
-        transform: translateX(-75%); /* Ảnh 4 */
+    30% {
+        opacity: 0; /* Bắt đầu mờ dần đi nhường chỗ cho ảnh sau */
     }
     100% {
-        transform: translateX(0%); /* Quay lại ảnh 1 */
+        opacity: 0; /* Giữ trạng thái ẩn cho đến hết chu kỳ */
     }
 }
