@@ -468,3 +468,67 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
   .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem 0; }
   .scroll-top { width: 38px; height: 38px; bottom: 1.5rem; right: 1.5rem; font-size: 1rem; }
 }
+/* Đặt lại margin và padding mặc định */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f9;
+}
+
+/* Khung hiển thị: Chỉ cho phép hiển thị 1 ảnh tại một thời điểm */
+.slider-container {
+    width: 800px;
+    max-width: 100%;
+    height: 400px;
+    overflow: hidden; /* Ẩn phần ảnh bị tràn ra ngoài */
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Dải chứa ảnh: Đặt chiều rộng 400% vì có 4 ảnh */
+.slider-wrapper {
+    display: flex;
+    width: 400%; 
+    height: 100%;
+    /* Gọi hiệu ứng animation: chạy trong 16s và lặp lại vô hạn */
+    animation: slide 16s infinite;
+}
+
+/* Chỉnh kích thước từng ảnh cho vừa vặn */
+.slider-wrapper img {
+    width: 25%; /* 100% chia 4 ảnh = 25% tổng chiều rộng của wrapper */
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 
+  Thiết lập Keyframes để chuyển ảnh.
+  Tổng thời gian 16s: mỗi ảnh sẽ hiển thị 4s.
+  Trong đó: phần trăm đứng im dài hơn để người dùng kịp xem, 
+  phần trăm chuyển tiếp ngắn (ví dụ từ 20% đến 25%) để tạo cảm giác lướt.
+*/
+@keyframes slide {
+    0%, 20% {
+        transform: translateX(0%); /* Ảnh 1 */
+    }
+    25%, 45% {
+        transform: translateX(-25%); /* Ảnh 2 */
+    }
+    50%, 70% {
+        transform: translateX(-50%); /* Ảnh 3 */
+    }
+    75%, 95% {
+        transform: translateX(-75%); /* Ảnh 4 */
+    }
+    100% {
+        transform: translateX(0%); /* Quay lại ảnh 1 */
+    }
+}
