@@ -356,68 +356,7 @@
   <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Lên đầu trang">↑</button>
 
   <script src="script.js"></script>
-
-
-<style>
-body{
-    margin:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    background:#111;
-}
-
-/* Khung chứa */
-.slider{
-    width:800px;
-    height:450px;
-    overflow:hidden;
-    border-radius:20px;
-    position:relative;
-    box-shadow:0 0 20px rgba(255,255,255,0.3);
-}
-
-/* Danh sách ảnh */
-.slides{
-    display:flex;
-    width:300%;
-    animation:slide 12s infinite;
-}
-
-/* Ảnh */
-.slides img{
-    width:800px;
-    height:450px;
-    object-fit:cover;
-}
-
-/* Hiệu ứng chuyển động */
-@keyframes slide{
-    0%{transform:translateX(0);}
-    25%{transform:translateX(0);}
-
-    33%{transform:translateX(-800px);}
-    58%{transform:translateX(-800px);}
-
-    66%{transform:translateX(-1600px);}
-    91%{transform:translateX(-1600px);}
-
-    100%{transform:translateX(0);}
-}
-</style>
-</head>
-
-<body>
-
-<div class="slider">
-    <div class="slides">
-        <img src="https://picsum.photos/id/1015/800/450" alt="">
-        <img src="https://picsum.photos/id/1016/800/450" alt="">
-        <img src="https://picsum.photos/id/1018/800/450" alt="">
-    </div>
-</div>
-
 </body>
 </html>
+
 
