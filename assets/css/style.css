@@ -475,16 +475,20 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 .slider-wrapper{
     width:100%;
     margin-top:50px;
+
     display:flex;
     justify-content:center;
 }
 
 .slider-full{
-    width:90%;
-    max-width:1200px;
+    width:96%; /* tăng chiều rộng */
+    max-width:1400px; /* rộng hơn */
+
     height:500px;
+
     overflow:hidden;
     position:relative;
+
     border-radius:30px;
 
     box-shadow:
@@ -494,19 +498,21 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
 .slides-full{
     display:flex;
+
     width:400%;
     height:100%;
+
     animation:smoothSlide 20s infinite ease-in-out;
 }
 
 .slides-full img{
     width:25%;
     height:100%;
+
     object-fit:cover;
+
     flex-shrink:0;
 }
-
-/* Animation chuyển mượt */
 
 @keyframes smoothSlide{
 
@@ -536,8 +542,9 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 @media(max-width:768px){
 
     .slider-full{
-        width:95%;
+        width:98%;
         height:260px;
+
         border-radius:20px;
     }
 
