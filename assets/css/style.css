@@ -468,32 +468,27 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
   .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem 0; }
   .scroll-top { width: 38px; height: 38px; bottom: 1.5rem; right: 1.5rem; font-size: 1rem; }
 }
-.slider{
-    width:100%;
-    max-width:620px;
-    height:320px;
-    overflow:hidden;
-    border-radius:28px;
-    margin:35px 0;
-    position:relative;
-
-    border:1px solid rgba(255,255,255,0.1);
-
-    box-shadow:
-    0 15px 40px rgba(0,0,0,0.35),
-    0 0 25px rgba(98,195,61,0.15);
-
-    backdrop-filter:blur(10px);
+.slider-wrapper{
+    width:100vw;
+    margin-left:calc(-50vw + 50%);
+    margin-top:60px;
 }
 
-.slides{
+.slider-full{
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+    position:relative;
+}
+
+.slides-full{
     display:flex;
     width:400%;
     height:100%;
-    animation:slide 18s infinite ease-in-out;
+    animation:fullSlider 18s infinite ease-in-out;
 }
 
-.slides img{
+.slides-full img{
     width:25%;
     height:100%;
     object-fit:cover;
@@ -501,7 +496,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
 /* Animation */
 
-@keyframes slide{
+@keyframes fullSlider{
 
     0%,20%{
         transform:translateX(0);
@@ -528,9 +523,8 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
 @media(max-width:768px){
 
-    .slider{
-        height:220px;
-        border-radius:20px;
+    .slider-full{
+        height:60vh;
     }
 
 }
