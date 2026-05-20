@@ -481,8 +481,8 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 }
 
 .slider-full{
-    width:96%; /* tăng chiều rộng */
-    max-width:1400px; /* rộng hơn */
+    width:99%;
+    max-width:1800px;
 
     height:500px;
 
@@ -491,9 +491,21 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
     border-radius:30px;
 
+    transition:0.5s ease;
+
     box-shadow:
     0 15px 40px rgba(0,0,0,0.3),
     0 0 20px rgba(98,195,61,0.15);
+}
+
+/* Hover nổi lên */
+
+.slider-full:hover{
+    transform:translateY(-12px) scale(1.01);
+
+    box-shadow:
+    0 25px 60px rgba(0,0,0,0.45),
+    0 0 35px rgba(98,195,61,0.3);
 }
 
 .slides-full{
@@ -502,7 +514,8 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     width:400%;
     height:100%;
 
-    animation:smoothSlide 20s infinite ease-in-out;
+    /* Chuyển nhanh hơn */
+    animation:smoothSlide 12s infinite ease-in-out;
 }
 
 .slides-full img{
@@ -512,7 +525,17 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     object-fit:cover;
 
     flex-shrink:0;
+
+    transition:0.5s;
 }
+
+/* Zoom nhẹ ảnh khi hover */
+
+.slider-full:hover img{
+    transform:scale(1.03);
+}
+
+/* Animation */
 
 @keyframes smoothSlide{
 
