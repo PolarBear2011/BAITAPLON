@@ -344,11 +344,11 @@ nav.scrolled .hamburger span { background: #ffffff; }
 .gallery-item:hover .gallery-css-img { transform: scale(1.06); }
 
 /* Tối ưu: Thay bằng thư mục assets cục bộ */
-.img-before-1 { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('assets/images/amazon-before.webp'); }
-.img-before-2 { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('assets/images/ocean-before.webp'); }
-.img-before-3 { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('assets/images/field-before.webp'); }
-.img-after-1 { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('assets/images/city-after.webp'); }
-.img-after-2 { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('assets/images/ocean-after.webp'); }
+.img-before-1 { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('../images/amazon-before.webp'); }
+.img-before-2 { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('../images/ocean-before.webp'); }
+.img-before-3 { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('../images/field-before.webp'); }
+.img-after-1 { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('../images/city-after.webp'); }
+.img-after-2 { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('../images/ocean-after.webp'); }
 
 .gallery-overlay {
   position: absolute; bottom: 0; left: 0; width: 100%; padding: 1.5rem;
