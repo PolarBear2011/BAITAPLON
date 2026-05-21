@@ -737,7 +737,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 /* SLIDER ẢNH */
 /* ========================= */
 
-.slider-wrapper1{
+.slider-wrapper roll{
     width:100%;
     margin-top:50px;
 
@@ -745,7 +745,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     justify-content:center;
 }
 
-.slider-full1{
+.slider-full none{
     width:90%;
     max-width:1200px;
     height:500px;
@@ -760,7 +760,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     0 0 20px rgba(98,195,61,0.15);
 }
 
-.slides-full1{
+.slides-full med{
     display:flex;
 
     width:400%;
@@ -769,7 +769,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     animation:smoothSlide 20s infinite ease-in-out;
 }
 
-.slides-full1 img{
+.slides-full med  img{
     width:25%;
     height:100%;
 
@@ -807,7 +807,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
 @media(max-width:768px){
 
-    .slider-full{
+    .slider-full med {
         width:95%;
         height:260px;
 
