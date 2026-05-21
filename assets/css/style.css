@@ -627,7 +627,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
     color:white;
 
-    font-size:42px; /* giảm từ 56px */
+    font-size:56px; /* giảm từ 56px */
 
     line-height:1.2;
 
@@ -642,7 +642,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
     color:rgba(255,255,255,0.85);
 
-    font-size:17px; /* giảm từ 20px */
+    font-size:20px; /* giảm từ 20px */
 
     line-height:1.6;
 
@@ -759,11 +759,11 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
 .xenova-frame{
 
-    width:99%;
+    width:90%;
 
-    max-width:1900px;
+    max-width:1200px;
 
-    height:88vh;
+    height:50vh;
 
     margin:70px auto;
 
