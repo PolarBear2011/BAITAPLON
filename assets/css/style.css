@@ -501,7 +501,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
     max-width:1200px;
 
-    height:700px;
+    height:550px;
 
     overflow:hidden;
 
@@ -627,32 +627,29 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
     color:white;
 
-    font-size:56px;
+    font-size:42px; /* giảm từ 56px */
 
     line-height:1.2;
 
     font-weight:900;
 
-    max-width:900px;
+    max-width:700px;
 
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
-
-/* Description */
 
 .news-overlay p{
 
     color:rgba(255,255,255,0.85);
 
-    font-size:20px;
+    font-size:17px; /* giảm từ 20px */
 
-    line-height:1.7;
+    line-height:1.6;
 
-    max-width:750px;
+    max-width:650px;
 
-    margin-bottom:30px;
+    margin-bottom:25px;
 }
-
 /* Button */
 
 .news-btn{
@@ -714,12 +711,14 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
     .news-slider{
 
-        width:99%;
+        width:96%;
 
-        height:420px;
+        height:320px;
 
-        border-radius:22px;
+        border-radius:20px;
     }
+
+}
 
     .news-overlay{
 
