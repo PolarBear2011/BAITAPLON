@@ -737,7 +737,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 /* SLIDER ẢNH */
 /* ========================= */
 
-.slider-wrapper{
+.slider-wrapper1{
     width:100%;
     margin-top:50px;
 
@@ -745,7 +745,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     justify-content:center;
 }
 
-.slider-full{
+.slider-full1{
     width:90%;
     max-width:1200px;
     height:500px;
@@ -760,7 +760,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     0 0 20px rgba(98,195,61,0.15);
 }
 
-.slides-full{
+.slides-full1{
     display:flex;
 
     width:400%;
@@ -769,7 +769,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     animation:smoothSlide 20s infinite ease-in-out;
 }
 
-.slides-full img{
+.slides-full1 img{
     width:25%;
     height:100%;
 
