@@ -740,41 +740,51 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 /* AUTO IMAGE EFFECT */
 /* ========================= */
 
-.auto-gallery{
+/* ========================= */
+/* XENOVA IMAGE EFFECT */
+/* ========================= */
 
-    width:95%;
+.xenova-frame{
 
-    max-width:1400px;
+    width:96%;
 
-    height:500px;
+    max-width:1700px;
 
-    margin:60px auto;
+    height:520px;
+
+    margin:70px auto;
 
     overflow:hidden;
 
-    border-radius:30px;
-
     position:relative;
 
-    box-shadow:
-    0 20px 50px rgba(0,0,0,0.3);
+    border-radius:35px;
 
-    transition:0.5s;
+    background:#111;
+
+    transition:0.6s ease;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,0.35),
+    0 0 25px rgba(98,195,61,0.18);
 }
 
 /* Hover nổi */
 
-.auto-gallery:hover{
+.xenova-frame:hover{
 
-    transform:translateY(-10px);
+    transform:
+    translateY(-12px)
+    scale(1.01);
 
     box-shadow:
-    0 30px 70px rgba(0,0,0,0.45);
+    0 35px 80px rgba(0,0,0,0.5),
+    0 0 40px rgba(98,195,61,0.28);
 }
 
-/* Track */
+/* Track ảnh */
 
-.gallery-track{
+.veltrix-lane{
 
     display:flex;
 
@@ -782,12 +792,13 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
     height:100%;
 
-    animation:autoMove 14s infinite ease-in-out;
+    animation:
+    auroraShiftX 11s infinite cubic-bezier(.77,0,.18,1);
 }
 
-/* Image */
+/* Ảnh */
 
-.gallery-track img{
+.veltrix-lane img{
 
     width:25%;
 
@@ -797,33 +808,33 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
     flex-shrink:0;
 
-    transition:0.5s;
+    transition:1s;
 }
 
-/* Zoom ảnh khi hover */
+/* Hover zoom nhẹ */
 
-.auto-gallery:hover img{
+.xenova-frame:hover img{
 
-    transform:scale(1.04);
+    transform:scale(1.05);
 }
 
-/* Animation */
+/* Animation cực mượt */
 
-@keyframes autoMove{
+@keyframes auroraShiftX{
 
-    0%,20%{
+    0%,18%{
         transform:translateX(0);
     }
 
-    25%,45%{
+    23%,43%{
         transform:translateX(-25%);
     }
 
-    50%,70%{
+    48%,68%{
         transform:translateX(-50%);
     }
 
-    75%,95%{
+    73%,93%{
         transform:translateX(-75%);
     }
 
@@ -836,13 +847,13 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
 @media(max-width:768px){
 
-    .auto-gallery{
+    .xenova-frame{
 
         width:98%;
 
         height:260px;
 
-        border-radius:20px;
+        border-radius:22px;
     }
 
 }
