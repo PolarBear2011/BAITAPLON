@@ -743,14 +743,17 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 /* ========================= */
 /* XENOVA IMAGE EFFECT */
 /* ========================= */
+/* ========================= */
+/* XENOVA IMAGE EFFECT */
+/* ========================= */
 
 .xenova-frame{
 
-    width:96%;
+    width:99%;
 
-    max-width:1700px;
+    max-width:1900px;
 
-    height:520px;
+    height:88vh;
 
     margin:70px auto;
 
@@ -758,15 +761,15 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
     position:relative;
 
-    border-radius:35px;
+    border-radius:40px;
 
     background:#111;
 
-    transition:0.6s ease;
+    transition:0.7s ease;
 
     box-shadow:
-    0 20px 60px rgba(0,0,0,0.35),
-    0 0 25px rgba(98,195,61,0.18);
+    0 25px 70px rgba(0,0,0,0.35),
+    0 0 30px rgba(98,195,61,0.18);
 }
 
 /* Hover nổi */
@@ -774,12 +777,12 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 .xenova-frame:hover{
 
     transform:
-    translateY(-12px)
-    scale(1.01);
+    translateY(-10px)
+    scale(1.005);
 
     box-shadow:
-    0 35px 80px rgba(0,0,0,0.5),
-    0 0 40px rgba(98,195,61,0.28);
+    0 40px 90px rgba(0,0,0,0.5),
+    0 0 45px rgba(98,195,61,0.3);
 }
 
 /* Track ảnh */
@@ -793,7 +796,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     height:100%;
 
     animation:
-    auroraShiftX 11s infinite cubic-bezier(.77,0,.18,1);
+    auroraShiftX 16s infinite cubic-bezier(.77,0,.18,1);
 }
 
 /* Ảnh */
@@ -808,17 +811,17 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
     flex-shrink:0;
 
-    transition:1s;
+    transition:1.2s ease;
 }
 
 /* Hover zoom nhẹ */
 
 .xenova-frame:hover img{
 
-    transform:scale(1.05);
+    transform:scale(1.04);
 }
 
-/* Animation cực mượt */
+/* Animation siêu mượt */
 
 @keyframes auroraShiftX{
 
@@ -826,15 +829,15 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
         transform:translateX(0);
     }
 
-    23%,43%{
+    22%,43%{
         transform:translateX(-25%);
     }
 
-    48%,68%{
+    47%,68%{
         transform:translateX(-50%);
     }
 
-    73%,93%{
+    72%,93%{
         transform:translateX(-75%);
     }
 
@@ -843,17 +846,44 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     }
 }
 
-/* Mobile */
+/* ========================= */
+/* TABLET */
+/* ========================= */
 
-@media(max-width:768px){
+@media(max-width:1024px){
 
     .xenova-frame{
 
         width:98%;
 
-        height:260px;
+        height:65vh;
+
+        border-radius:30px;
+    }
+
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media(max-width:768px){
+
+    .xenova-frame{
+
+        width:100%;
+
+        height:42vh;
+
+        margin:40px auto;
 
         border-radius:22px;
+    }
+
+    .veltrix-lane{
+
+        animation:
+        auroraShiftX 14s infinite cubic-bezier(.77,0,.18,1);
     }
 
 }
