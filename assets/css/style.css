@@ -735,3 +735,80 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     }
 
 }
+.slider-wrapper{
+    width:100%;
+    margin-top:50px;
+
+    display:flex;
+    justify-content:center;
+}
+
+.slider-full{
+    width:96%; /* tăng chiều rộng */
+    max-width:1400px; /* rộng hơn */
+
+    height:500px;
+
+    overflow:hidden;
+    position:relative;
+
+    border-radius:30px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,0.3),
+    0 0 20px rgba(98,195,61,0.15);
+}
+
+.slides-full{
+    display:flex;
+
+    width:400%;
+    height:100%;
+
+    animation:smoothSlide 20s infinite ease-in-out;
+}
+
+.slides-full img{
+    width:25%;
+    height:100%;
+
+    object-fit:cover;
+
+    flex-shrink:0;
+}
+
+@keyframes smoothSlide{
+
+    0%,20%{
+        transform:translateX(0);
+    }
+
+    25%,45%{
+        transform:translateX(-25%);
+    }
+
+    50%,70%{
+        transform:translateX(-50%);
+    }
+
+    75%,95%{
+        transform:translateX(-75%);
+    }
+
+    100%{
+        transform:translateX(0);
+    }
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .slider-full{
+        width:98%;
+        height:260px;
+
+        border-radius:20px;
+    }
+
+}
