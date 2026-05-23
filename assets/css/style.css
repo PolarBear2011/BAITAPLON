@@ -928,7 +928,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
     text-decoration: none;
     font-size: 30px;
-    color: white;
+    color: green;
 
     transition: 0.4s ease;
 
@@ -993,7 +993,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     #0f172a
     );
 
-    color: white;
+    color: green;
     font-size: 28px;
     cursor: pointer;
 
