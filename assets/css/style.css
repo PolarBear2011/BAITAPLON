@@ -897,31 +897,40 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     }
 
 }
-/* KHUNG CHỨA */
+/* =========================
+   SOCIAL BUTTONS
+========================= */
+
 .social-fixed{
     position: fixed;
     right: 25px;
-    bottom: 30px;
+    bottom: 120px; /* đẩy lên trên */
+    
     display: flex;
     flex-direction: column;
     gap: 18px;
+
     z-index: 9999;
 }
 
-/* NÚT CHUNG */
+/* =========================
+   NÚT CHUNG
+========================= */
+
 .social-btn{
-    width: 59px;
-    height: 50px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     text-decoration: none;
     font-size: 30px;
-    color: green;
+    color: white;
 
     transition: 0.4s ease;
-    position: relative;
 
     box-shadow:
     0 10px 25px rgba(0,0,0,0.25),
@@ -930,7 +939,8 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     backdrop-filter: blur(10px);
 }
 
-/* MESSENGER */
+/* Messenger */
+
 .messenger{
     background: linear-gradient(
     135deg,
@@ -939,7 +949,8 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     );
 }
 
-/* INSTAGRAM */
+/* Instagram */
+
 .instagram{
     background: linear-gradient(
     135deg,
@@ -948,17 +959,60 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     );
 }
 
-/* HOVER NỔI LÊN */
+/* Hover */
+
 .social-btn:hover{
     transform:
-    translateY(-10px)
-    scale(1.12);
+    translateY(-8px)
+    scale(1.1);
 
     box-shadow:
     0 20px 40px rgba(0,0,0,0.35),
     0 0 35px rgba(0,255,255,0.8);
 }
 
+/* =========================
+   SCROLL TOP
+========================= */
+
+.scroll-top{
+    position: fixed;
+
+    right: 25px;
+    bottom: 30px;
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+    border: none;
+
+    background: linear-gradient(
+    135deg,
+    #1e293b,
+    #0f172a
+    );
+
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+
+    z-index: 9999;
+
+    transition: 0.4s ease;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.25);
+}
+
+.scroll-top:hover{
+    transform:
+    translateY(-8px)
+    scale(1.1);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.35);
+}
 /* HIỆU ỨNG NHẤP NHÁY */
 .social-btn::before{
     content: "";
