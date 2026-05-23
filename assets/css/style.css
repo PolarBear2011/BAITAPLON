@@ -897,3 +897,88 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     }
 
 }
+/* KHUNG CHỨA */
+.social-fixed{
+    position: fixed;
+    right: 25px;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    z-index: 9999;
+}
+
+/* NÚT CHUNG */
+.social-btn{
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 30px;
+    color: white;
+
+    transition: 0.4s ease;
+    position: relative;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.25),
+    0 0 20px rgba(0,255,255,0.3);
+
+    backdrop-filter: blur(10px);
+}
+
+/* MESSENGER */
+.messenger{
+    background: linear-gradient(
+    135deg,
+    #00c6ff,
+    #0072ff
+    );
+}
+
+/* INSTAGRAM */
+.instagram{
+    background: linear-gradient(
+    135deg,
+    #00d2ff,
+    #3a7bd5
+    );
+}
+
+/* HOVER NỔI LÊN */
+.social-btn:hover{
+    transform:
+    translateY(-10px)
+    scale(1.12);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.35),
+    0 0 35px rgba(0,255,255,0.8);
+}
+
+/* HIỆU ỨNG NHẤP NHÁY */
+.social-btn::before{
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.3);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse{
+
+    0%{
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100%{
+        transform: scale(1.5);
+        opacity: 0;
+    }
+
+}
