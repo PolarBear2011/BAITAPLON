@@ -918,8 +918,8 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 ========================= */
 
 .social-btn{
-    width: 65px;
-    height: 65px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
 
     display: flex;
@@ -973,8 +973,8 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     right: 25px;
     bottom: 30px;
 
-    width: 65px;
-    height: 65px;
+    width: 55px;
+    height: 55px;
 
     border-radius: 50%;
     border: none;
