@@ -480,9 +480,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
   .scroll-top { width: 38px; height: 38px; bottom: 1.5rem; right: 1.5rem; font-size: 1rem; }
 }
 
-/* ========================= */
-/* VNEXPRESS NEWS SLIDER */
-/* ========================= */
+
 
 .news-slider-section{
 
@@ -527,7 +525,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     0 0 35px rgba(98,195,61,0.25);
 }
 
-/* Track */
+
 
 .news-track{
 
@@ -540,7 +538,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     animation:vnSlide 14s infinite ease-in-out;
 }
 
-/* Item */
+
 
 .news-item{
 
@@ -555,7 +553,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     flex-shrink:0;
 }
 
-/* Image */
+
 
 .news-item img{
 
@@ -568,14 +566,14 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     transition:0.7s;
 }
 
-/* Zoom ảnh */
+
 
 .news-item:hover img{
 
     transform:scale(1.08);
 }
 
-/* Overlay */
+
 
 .news-overlay{
 
@@ -600,7 +598,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     );
 }
 
-/* Category */
+
 
 .news-category{
 
@@ -621,14 +619,13 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     margin-bottom:25px;
 }
 
-/* Title */
+
 
 .news-overlay h2{
 
     color:white;
 
-    font-size:56px; /* giảm từ 56px */
-
+    font-size:56px; 
     line-height:1.2;
 
     font-weight:900;
@@ -642,7 +639,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
     color:rgba(255,255,255,0.85);
 
-    font-size:20px; /* giảm từ 20px */
+    font-size:20px; 
 
     line-height:1.6;
 
@@ -650,7 +647,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
     margin-bottom:25px;
 }
-/* Button */
+
 
 .news-btn{
 
@@ -680,7 +677,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     0 0 35px #62c33d;
 }
 
-/* Animation */
+
 
 @keyframes vnSlide{
 
@@ -705,7 +702,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     }
 }
 
-/* Mobile */
+
 
 @media(max-width:768px){
 
@@ -743,19 +740,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
         font-size:14px;
     }
-/* ========================= */
-/* SLIDER ẢNH */
-/* ========================= */
-/* ========================= */
-/* AUTO IMAGE EFFECT */
-/* ========================= */
 
-/* ========================= */
-/* XENOVA IMAGE EFFECT */
-/* ========================= */
-/* ========================= */
-/* XENOVA IMAGE EFFECT */
-/* ========================= */
 
 .xenova-frame{
 
@@ -782,7 +767,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     0 0 30px rgba(98,195,61,0.18);
 }
 
-/* Hover nổi */
+
 
 .xenova-frame:hover{
 
@@ -795,7 +780,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     0 0 45px rgba(98,195,61,0.3);
 }
 
-/* Track ảnh */
+
 
 .veltrix-lane{
 
@@ -809,7 +794,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     auroraShiftX 16s infinite cubic-bezier(.77,0,.18,1);
 }
 
-/* Ảnh */
+
 
 .veltrix-lane img{
 
@@ -824,14 +809,14 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     transition:1.2s ease;
 }
 
-/* Hover zoom nhẹ */
+
 
 .xenova-frame:hover img{
 
     transform:scale(1.04);
 }
 
-/* Animation siêu mượt */
+
 
 @keyframes auroraShiftX{
 
@@ -856,9 +841,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     }
 }
 
-/* ========================= */
-/* TABLET */
-/* ========================= */
+
 
 @media(max-width:1024px){
 
@@ -873,9 +856,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 
 }
 
-/* ========================= */
-/* MOBILE */
-/* ========================= */
+
 
 @media(max-width:768px){
 
@@ -897,14 +878,11 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     }
 
 }
-/* =========================
-   SOCIAL BUTTONS
-========================= */
 
 .social-fixed{
     position: fixed;
     right: 25px;
-    bottom: 120px; /* đẩy lên trên */
+    bottom: 120px; 
     
     display: flex;
     flex-direction: column;
@@ -913,9 +891,6 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     z-index: 9999;
 }
 
-/* =========================
-   NÚT CHUNG
-========================= */
 
 .social-btn{
     width: 45px;
@@ -939,19 +914,17 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     backdrop-filter: blur(10px);
 }
 
-/* Messenger */
+
 
 .messenger{
     background:green;
 }
 
-/* Instagram */
-
 .instagram{
     background: green;
 }
 
-/* Hover */
+
 
 .social-btn:hover{
     transform:
@@ -963,9 +936,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     0 0 35px rgba(0,255,255,0.8);
 }
 
-/* =========================
-   SCROLL TOP
-========================= */
+
 
 .scroll-top{
     position: fixed;
@@ -1001,7 +972,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     box-shadow:
     0 20px 40px rgba(0,0,0,0.35);
 }
-/* HIỆU ỨNG NHẤP NHÁY */
+
 .social-btn::before{
     content: "";
     position: absolute;
