@@ -938,7 +938,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 .scroll-top{
     position: fixed;
 
-    right: 50px;
+    right: 35px;
     bottom: 50px;
 
     width: 45px;
