@@ -1006,6 +1006,6 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 /* Thanh tiến trình */
 .progress-bar {
   height: 4px;
-  background: #d32f2f; /* Màu đỏ đặc trưng của báo chí */
+  background: darkseagreen; /* Màu đỏ đặc trưng của báo chí */
   width: 0%;
 }
