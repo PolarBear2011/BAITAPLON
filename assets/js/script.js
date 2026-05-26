@@ -238,3 +238,14 @@ window.addEventListener('mousemove', (e) => {
   const my = (e.clientY / window.innerHeight - .5) * 25;
   orbMover.style.transform = `translate(${mx}px, ${my}px)`;
 });
+// Lắng nghe sự kiện cuộn trang
+window.addEventListener("scroll", function() {
+  // Lấy vị trí cuộn hiện tại
+  let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  // Lấy tổng chiều cao của trang trừ đi chiều cao màn hình hiển thị
+  let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  // Tính toán phần trăm
+  let scrolled = (winScroll / height) * 100;
+  // Gán % vào chiều rộng của thanh tiến trình
+  document.getElementById("myBar").style.width = scrolled + "%";
+});
