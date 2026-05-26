@@ -238,14 +238,39 @@ window.addEventListener('mousemove', (e) => {
   const my = (e.clientY / window.innerHeight - .5) * 25;
   orbMover.style.transform = `translate(${mx}px, ${my}px)`;
 });
-// Lắng nghe sự kiện cuộn trang
-window.addEventListener("scroll", function() {
-  // Lấy vị trí cuộn hiện tại
-  let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  // Lấy tổng chiều cao của trang trừ đi chiều cao màn hình hiển thị
-  let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  // Tính toán phần trăm
-  let scrolled = (winScroll / height) * 100;
-  // Gán % vào chiều rộng của thanh tiến trình
-  document.getElementById("myBar").style.width = scrolled + "%";
+// Đợi DOM tải hoàn tất trước khi chạy script
+document.addEventListener('DOMContentLoaded', () => {
+  const progressBar = document.getElementById('reading-progress');
+  
+  // Cờ (flag) để kiểm soát tần suất cập nhật UI
+  let ticking = false;
+
+  const updateProgress = () => {
+    // 1. Lấy khoảng cách người dùng đã cuộn từ trên cùng xuống
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    
+    // 2. Tính tổng chiều cao thực tế của bài viết có thể cuộn
+    // (Bằng tổng chiều cao của trang trừ đi chiều cao của màn hình người dùng)
+    const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    
+    // 3. Tính tỷ lệ phần trăm
+    const progress = (scrollY / totalHeight) * 100;
+    
+    // 4. Cập nhật chiều rộng (width) cho thanh tiến trình
+    progressBar.style.width = `${progress}%`;
+    
+    // Reset cờ sau khi đã cập nhật xong giao diện
+    ticking = false;
+  };
+
+  // Lắng nghe sự kiện cuộn trang
+  window.addEventListener('scroll', () => {
+    // Nếu không có tác vụ nào đang chờ xử lý thì mới gọi requestAnimationFrame
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateProgress();
+      });
+      ticking = true;
+    }
+  });
 });
