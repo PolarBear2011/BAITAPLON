@@ -992,3 +992,20 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     }
 
 }
+/* Container cố định trên cùng */
+.progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px; /* Độ dày của thanh */
+  background: #f1f1f1;
+  z-index: 9999;
+}
+
+/* Thanh tiến trình */
+.progress-bar {
+  height: 4px;
+  background: #d32f2f; /* Màu đỏ đặc trưng của báo chí */
+  width: 0%;
+}
