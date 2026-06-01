@@ -999,7 +999,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
   left: 0;
   width: 100%;
   height: 5px; /* Bạn có thể thay đổi độ dày tại đây */
-  background-color: #f0f0f0; /* Màu nền của thanh */
+  background-color: darkseagreen; /* Màu nền của thanh */
   z-index: 9999; /* Đảm bảo thanh luôn nổi trên các phần tử khác như header */
 }
 
