@@ -992,23 +992,21 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
     }
 
 }
-/* Khung chứa thanh tiến trình */
+
 .progress-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 5px; /* Bạn có thể thay đổi độ dày tại đây */
-  background-color: darkseagreen; /* Màu nền của thanh */
-  z-index: 9999; /* Đảm bảo thanh luôn nổi trên các phần tử khác như header */
-}
+  height: 5px; 
+  background-color: darkseagreen; 
+  z-index: 9999;
 
-/* Thanh màu hiển thị tiến độ */
 .progress-bar {
   height: 100%;
-  /* Sử dụng dải màu gradient từ cam sang hồng đỏ */
-  background: darkseagreen 
-  width: 0%; /* Chiều rộng mặc định ban đầu là 0 */
-  border-radius: 0 2px 2px 0; /* Bo tròn nhẹ góc bên phải */
-  will-change: width; /* Gợi ý cho trình duyệt tối ưu hóa việc vẽ lại */
+ 
+  background: darkseagreen;
+  width: 0%; 
+  border-radius: 0 2px 2px 0; 
+  will-change: width; 
 }
