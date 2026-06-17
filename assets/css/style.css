@@ -1006,7 +1006,7 @@ footer { background: #0f3010; border-top: 1px solid rgba(255,255,255,0.08); padd
 .progress-bar {
   height: 100%;
  
-  background: darkseagreen;
+  background: darkseagreen
   width: 0%; 
   border-radius: 0 2px 2px 0; 
   will-change: width; 
